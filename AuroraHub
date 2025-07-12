@@ -1,0 +1,483 @@
+
+local function enviarNotificacao(mensagem)
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "A-U-R-O-R-A Hub v2",
+        Text = mensagem,
+        Duration = 5
+    })
+end
+
+enviarNotificacao("bem vindo(a) ao A-u-r-o-r-a Hub v2!, espero que se divirta ")
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/Library-ui/refs/heads/main/Redzhubui"))()
+
+local Window = redzlib:MakeWindow({
+    Title = "Aurora Hub v2",
+    SubTitle = "aqui com muitas coisas nesse script",
+    SaveFolder = "Juan"
+})
+
+Window:AddMinimizeButton({
+    Button = { Image = "rbxassetid://90681824429226", BackgroundTransparency = 0 },
+    Corner = { CornerRadius = UDim.new(35, 5) },
+})
+
+local LocalTab = Window:MakeTab({"info", "info"})
+
+local Section = LocalTab:AddSection({"lá no  serve do Discord explica mais"})
+
+LocalTab:AddButton({
+    Name = "copiar",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+		setclipboard("https://discord.gg/Jq5X9Dj2V3")
+		print("Discord copiado!")
+end
+end
+})
+
+local Section = LocalTab:AddSection({"Creditos"})
+
+local Section = LocalTab:AddSection({"Juan (onwer)"})
+
+local Section = LocalTab:AddSection({"Sander X (mensagem grandes)"})
+
+local LocalTab = Window:MakeTab({"aleatório", "on"})
+
+local Section = LocalTab:AddSection({"v2 por que  o  tava muito grande para a minha área de transferência "})
+
+
+LocalTab:AddButton({
+    Name = "tela preta por 2 segundos",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local preto = Color3.new(0, 0, 0)
+
+-- Cria um ScreenGui
+local quadro = Instance.new("ScreenGui")
+quadro.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Cria um Label
+local label = Instance.new("TextLabel")
+label.Parent = quadro
+label.BackgroundColor3 = preto
+label.Size = UDim2.new(1, 0, 1, 0)
+label.Position = UDim2.new(0, 0, 0, 0)
+label.Text = "" -- Define o texto como vazio para que não apareça nada
+
+-- Espera 2 segundos
+task.wait(2)
+
+-- Remove o label
+label:Destroy()
+
+-- Remove o ScreenGui (opcional, se quiser remover o ScreenGui também)
+-- quadro:Destroy()
+end
+end
+})
+
+local LocalTab = Window:MakeTab({"vida", "hea"})
+
+local Section = LocalTab:AddSection({"selecione sua saúde "})
+
+LocalTab:AddButton({
+    Name = "coloca 100% de vida em você",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+if player and player.Character then
+    local character = player.Character
+    local humanoid = character:FindFirstChild("Humanoid")
+    if humanoid then
+        humanoid.Health = 100 -- Define a saúde do personagem para 100
+    end
+end
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "coloca 1 de vida em você",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+if player and player.Character then
+    local character = player.Character
+    local humanoid = character:FindFirstChild("Humanoid")
+    if humanoid then
+        humanoid.Health = 1 -- Define a saúde do personagem para 100
+    end
+end
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "coloca 50 % de vida",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+if player and player.Character then
+    local character = player.Character
+    local humanoid = character:FindFirstChild("Humanoid")
+    if humanoid then
+        humanoid.Health = 50
+    end
+end
+end
+end
+})
+
+
+
+LocalTab:AddTextBox({
+    Name = " porcento da vida",
+    Description = "número da vida",
+    placeholdertext = "colocar vida",
+    Callback = function(Value)
+        local healt = tonumber(Value)
+        if healt and game.Players.LocalPlayer.Character then
+            game.Players.LocalPlayer.Character.Humanoid.Health = healt
+            print("Pulo set to: " .. healt)
+      else
+            print("Cu")
+        end
+    end
+})
+
+local LocalTab = Window:MakeTab({"efeitos", "person"})
+
+local Section = LocalTab:AddSection({"efeitos da hora "})
+
+LocalTab:AddButton({
+    Name = "ficar com um redondo te orbitando",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local jogador = game.Players.LocalPlayer
+local personagem = jogador.Character or jogador.CharacterAdded:Wait()
+
+-- Criando a parte redonda
+local parte = Instance.new("Part")
+parte.Shape = Enum.PartType.Ball -- Define a forma como redonda
+parte.Size = Vector3.new(5, 5, 5) -- Tamanho da parte
+parte.Transparency = 0.5 -- Define a transparência
+parte.CanCollide = true -- Desativa a colisão
+parte.Parent = workspace -- Adiciona a parte ao espaço de trabalho
+
+-- Função para orbitar o jogador
+local function orbitar()
+    while true do
+        local posicao = personagem.PrimaryPart.Position
+        parte.Position = posicao + Vector3.new(0, 5, 0) + Vector3.new(math.sin(tick()) * 5, 0, math.cos(tick()) * 5) -- Orbita em torno do jogador
+        wait(0.1) -- Espera um pouco antes de atualizar a posição
+    end
+end
+
+-- Inicia a órbita
+orbitar()
+end
+end
+})
+
+
+LocalTab:AddButton({
+    Name = "deixar o personagem azul",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Define a cor (RGB - Red, Green, Blue)
+local newColor = Color3.new(0, 0, 1) -- Exemplo: azul
+
+-- Função para mudar a cor de todas as partes do corpo
+local function changeAllColors()
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Color = newColor
+        end
+    end
+end
+
+
+changeAllColors()
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = " personagem verde ",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Define a cor (RGB - Red, Green, Blue)
+local newColor = Color3.new(0, 1, 0) -- Exemplo: verde
+
+-- Função para mudar a cor de todas as partes do corpo
+local function changeAllColors()
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Color = newColor
+        end
+    end
+end
+
+-- Aplica a mudança de cor
+changeAllColors()
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = " personagem vermelho",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Define a cor (RGB - Red, Green, Blue)
+local newColor = Color3.new(1, 0, 0) -- Exemplo: sal kk
+
+-- Função para mudar a cor de todas as partes do corpo
+local function changeAllColors()
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Color = newColor
+        end
+    end
+end
+
+-- Aplica a mudança de cor
+changeAllColors()
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "se tremer por 5 segundos ",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+local shakeStrength = 1 -- Força da tremedeira (aumente para mais forte)
+local shakeSpeed = 30 -- Velocidade da tremedeira
+local duration = 5 -- Duração do terremoto em segundos
+
+local startTime = tick()
+
+while tick() - startTime < duration do
+    local xOffset = math.random() * shakeStrength - shakeStrength / 2
+    local yOffset = math.random() * shakeStrength - shakeStrength / 2
+    local zOffset = math.random() * shakeStrength - shakeStrength / 2
+
+    humanoidRootPart.CFrame = humanoidRootPart.CFrame * CFrame.new(xOffset, yOffset, zOffset)
+    wait(1 / shakeSpeed)
+end
+
+-- Resetar a posição após o terremoto
+task.wait(0.1) -- Pequena pausa
+humanoidRootPart.CFrame = humanoidRootPart.CFrame
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "ficar invisível (use algum fly para esse mover",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Fator de escala (ajuste este valor)
+local scaleFactor = -1
+
+-- Função para escalar o personagem
+local function setScale(part, scale)
+    if part then
+        part.Size = part.Size * scale
+    end
+end
+
+-- Escalar o personagem
+for _, child in pairs(character:GetChildren()) do
+    if child:IsA("BasePart") then
+        setScale(child, scaleFactor)
+    end
+end
+
+print("Tamanho do personagem aumentado!")
+end
+end
+})
+
+local LocalTab = Window:MakeTab({"coisas do v1", "star"})
+
+local Section = LocalTab:AddSection({" 🎆coisas que tem na Aurora Hub v1🎆 "})
+
+LocalTab:AddButton({
+    Name = "Afundar de agua",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local Terrain = workspace.Terrain
+
+
+local center = Vector3.new(0, 0, 0)
+
+
+local size = Vector3.new(5000, 100, 5000) -- largura, altura, profundidade
+
+
+local cf = CFrame.new(center)
+
+
+Terrain:FillBlock(cf, size, Enum.Material.Water)
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "Meteoro (sei que gostou Joaodashoppi)",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local Players = game:GetService("Players")
+local plr = Players.LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hrp = char:WaitForChild("HumanoidRootPart")
+
+-- CONFIGURAR VELOCIDADE (quanto menor, mais devagar ele cai)
+local fallSpeed = -30  -- ajustável
+
+-- Criar meteoro gigante
+local meteor = Instance.new("Part")
+meteor.Shape = Enum.PartType.Ball
+meteor.Size = Vector3.new(70, 90, 70) -- tamanho gigante
+meteor.Position = hrp.Position + (hrp.CFrame.LookVector * 40) + Vector3.new(0, 100, 0)
+meteor.Anchored = false
+meteor.CanCollide = true
+meteor.Material = Enum.Material.Neon
+meteor.BrickColor = BrickColor.new("Really red")
+meteor.Name = "Meteor"
+meteor.Parent = workspace
+
+-- Efeito de fogo
+local fire = Instance.new("Fire")
+fire.Size = 100
+fire.Heat = 100
+fire.Color = Color3.fromRGB(255, 80, 0)
+fire.SecondaryColor = Color3.fromRGB(255, 0, 0)
+fire.Parent = meteor
+
+-- Aplicar velocidade
+local bodyVelocity = Instance.new("BodyVelocity")
+bodyVelocity.Velocity = Vector3.new(0, fallSpeed, 0)
+bodyVelocity.MaxForce = Vector3.new(0, math.huge, 0)
+bodyVelocity.Parent = meteor
+
+-- Explosão ao tocar
+meteor.Touched:Connect(function(hit)
+	if hit:IsDescendantOf(char) then return end
+	if meteor then
+		local explosion = Instance.new("Explosion")
+		explosion.Position = meteor.Position
+		explosion.BlastRadius = 100
+		explosion.BlastPressure = 2000000
+		explosion.DestroyJointRadiusPercent = 0
+		explosion.Parent = workspace
+		meteor:Destroy()
+	end
+end)
+end
+end
+})
+
+local LocalTab = Window:MakeTab({"Coisas divertidas", "Mil"})
+
+local Section = LocalTab:AddSection({"Sla"})
+
+LocalTab:AddButton({
+    Name = "Natureza Corrupta no Ar",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Cria uma nova parte
+local part = Instance.new("Part")
+part.Size = Vector3.new(3, 3, 3) -- Tamanho da parte
+part.Position = character.HumanoidRootPart.Position + Vector3.new(0, 3, 0) -- Posição acima do personagem
+part.Anchored = true
+part.CanCollide = true
+part.Material = "Neon"
+part.Color = Color3.new(1, 0, 0) -- Cor vermelha
+part.Parent = workspace
+
+-- Função para mover a parte para frente
+local function movePart()
+    while part and part.Parent do
+        part.Position = part.Position + character.HumanoidRootPart.CFrame.LookVector * 1.8 -- Move para frente
+        wait(0.1) -- Espera um pouco antes de mover novamente
+    end
+end
+
+-- Conecta a função de movimento
+movePart()
+
+-- Função para lidar com a colisão
+local function onTouched(hit)
+    print("A parte tocou em: " .. hit.Name) -- Imprime o nome do objeto tocado
+    part:Destroy() -- Destrói a parte após a colisão
+end
+
+-- Conecta a função onTouched ao evento Touched da parte
+part.Touched:Connect(onTouched)
+end
+end
+})
+
+LocalTab:AddButton({
+    Name = "Natureza Corrupta no chão",
+    Callback = function()
+if game.Players.LocalPlayer.Character then
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Cria uma nova parte
+local part = Instance.new("Part")
+part.Size = Vector3.new(2, 2, 2) -- Tamanho da parte
+part.Position = character.HumanoidRootPart.Position + Vector3.new(0, 3, 0) -- Posição acima do personagem
+part.Anchored = false
+part.CanCollide = true
+part.Material = "Neon"
+part.Color = Color3.new(1, 0, 0) -- Cor vermelha
+part.Parent = workspace
+
+-- Função para mover a parte para frente
+local function movePart()
+    while part and part.Parent do
+        part.Position = part.Position + character.HumanoidRootPart.CFrame.LookVector * 1.7 -- Move para frente
+        wait(0.1) -- Espera um pouco antes de mover novamente
+    end
+end
+
+-- Conecta a função de movimento
+movePart()
+
+-- Função para lidar com a colisão
+local function onTouched(hit)
+    print("A parte tocou em: " .. hit.Name) -- Imprime o nome do objeto tocado
+    part:Destroy() -- Destrói a parte após a colisão
+end
+
+-- Conecta a função onTouched ao evento Touched da parte
+part.Touched:Connect(onTouched)
+end
+end
+})
+
+
